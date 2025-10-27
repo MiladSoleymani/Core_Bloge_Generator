@@ -1,0 +1,498 @@
+{
+  "patient": {
+    "name": "Kushagra Mandwal",
+    "age": 33,
+    "sex": "male"
+  },
+  "labs": [
+    {
+      "category": "biochemistry",
+      "test_name": "Sodium",
+      "value": "139",
+      "unit": "mmol/L",
+      "reference_range": "135-145",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Potassium",
+      "value": "5.2",
+      "unit": "mmol/L",
+      "reference_range": "3.5-5.5",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Chloride",
+      "value": "103",
+      "unit": "mmol/L",
+      "reference_range": "95-110",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Bicarbonate",
+      "value": "27",
+      "unit": "mmol/L",
+      "reference_range": "20-32",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Urea",
+      "value": "3.0",
+      "unit": "mmol/L",
+      "reference_range": "3.0-8.0",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Creatinine",
+      "value": "81",
+      "unit": "umol/L",
+      "reference_range": "60-110",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "eGFR",
+      "value": ">90",
+      "unit": "ml/min",
+      "reference_range": ">59",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Uric Acid",
+      "value": "0.40",
+      "unit": "mmol/L",
+      "reference_range": "0.20-0.50",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Calcium",
+      "value": "2.51",
+      "unit": "mmol/L",
+      "reference_range": "2.10-2.60",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Corrected Calcium",
+      "value": "2.33",
+      "unit": "mmol/L",
+      "reference_range": "2.10-2.60",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Phosphate",
+      "value": "1.03",
+      "unit": "mmol/L",
+      "reference_range": "0.8-1.5",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Total Bilirubin",
+      "value": "10",
+      "unit": "umol/L",
+      "reference_range": "4-20",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "ALP",
+      "value": "74",
+      "unit": "U/L",
+      "reference_range": "35-110",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "GGT",
+      "value": "21",
+      "unit": "U/L",
+      "reference_range": "5-50",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "LD",
+      "value": "173",
+      "unit": "U/L",
+      "reference_range": "120-250",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "AST",
+      "value": "28",
+      "unit": "U/L",
+      "reference_range": "10-40",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "ALT",
+      "value": "35",
+      "unit": "U/L",
+      "reference_range": "5-40",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Total Protein",
+      "value": "74",
+      "unit": "g/L",
+      "reference_range": "68-85",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Albumin",
+      "value": "49",
+      "unit": "g/L",
+      "reference_range": "39-50",
+      "flag": "normal"
+    },
+    {
+      "category": "biochemistry",
+      "test_name": "Globulin",
+      "value": "25",
+      "unit": "g/L",
+      "reference_range": "23-39",
+      "flag": "normal"
+    },
+    {
+      "category": "lipids",
+      "test_name": "Total Cholesterol",
+      "value": "4.6",
+      "unit": "mmol/L",
+      "reference_range": "3.5-5.5",
+      "flag": "normal"
+    },
+    {
+      "category": "lipids",
+      "test_name": "Triglycerides",
+      "value": "1.1",
+      "unit": "mmol/L",
+      "reference_range": "0.0-1.5",
+      "flag": "normal"
+    },
+    {
+      "category": "lipids",
+      "test_name": "HDL Cholesterol",
+      "value": "0.9",
+      "unit": "mmol/L",
+      "reference_range": "1.0-2.2",
+      "flag": "low"
+    },
+    {
+      "category": "lipids",
+      "test_name": "LDL Cholesterol",
+      "value": "3.2",
+      "unit": "mmol/L",
+      "reference_range": "0.0-2.5",
+      "flag": "high"
+    },
+    {
+      "category": "lipids",
+      "test_name": "Cholesterol/HDL Ratio",
+      "value": "5.1",
+      "unit": "",
+      "reference_range": "0.0-4.5",
+      "flag": "high"
+    },
+    {
+      "category": "lipids",
+      "test_name": "Non HDL Cholesterol",
+      "value": "3.7",
+      "unit": "mmol/L",
+      "reference_range": "<3.9",
+      "flag": "normal"
+    },
+    {
+      "category": "vitamins",
+      "test_name": "Vitamin D (25OH)",
+      "value": "58",
+      "unit": "nmol/L",
+      "reference_range": "50-160",
+      "flag": "normal"
+    },
+    {
+      "category": "thyroid",
+      "test_name": "TSH",
+      "value": "2.1",
+      "unit": "mU/L",
+      "reference_range": "0.40-3.50",
+      "flag": "normal"
+    },
+    {
+      "category": "glucose",
+      "test_name": "Glucose Fasting",
+      "value": "4.4",
+      "unit": "mmol/L",
+      "reference_range": "3.6-5.4",
+      "flag": "normal"
+    },
+    {
+      "category": "glucose",
+      "test_name": "HbA1c",
+      "value": "5.2",
+      "unit": "%",
+      "reference_range": "4.0-6.0",
+      "flag": "normal"
+    },
+    {
+      "category": "iron",
+      "test_name": "Ferritin",
+      "value": "59",
+      "unit": "ug/L",
+      "reference_range": "30-400",
+      "flag": "normal"
+    },
+    {
+      "category": "vitamins",
+      "test_name": "Vitamin B12",
+      "value": "284",
+      "unit": "pmol/L",
+      "reference_range": "130-855",
+      "flag": "normal"
+    },
+    {
+      "category": "vitamins",
+      "test_name": "Active Vitamin B12",
+      "value": "67",
+      "unit": "pmol/L",
+      "reference_range": ">35",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Haemoglobin",
+      "value": "144",
+      "unit": "g/L",
+      "reference_range": "130-180",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "RCC",
+      "value": "5.6",
+      "unit": "x10^12/L",
+      "reference_range": "4.5-6.5",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Haematocrit",
+      "value": "0.46",
+      "unit": "l/L",
+      "reference_range": "0.39-0.54",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "MCV",
+      "value": "81",
+      "unit": "fL",
+      "reference_range": "80-100",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "MCH",
+      "value": "25.6",
+      "unit": "pg",
+      "reference_range": "27.0-32.0",
+      "flag": "low"
+    },
+    {
+      "category": "hematology",
+      "test_name": "MCHC",
+      "value": "316",
+      "unit": "g/L",
+      "reference_range": "310-360",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "RDW",
+      "value": "13.3",
+      "unit": "",
+      "reference_range": "10.0-15.0",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "WCC",
+      "value": "6.1",
+      "unit": "x10^9/L",
+      "reference_range": "4.0-11.0",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Neutrophils",
+      "value": "2.39",
+      "unit": "x10^9/L",
+      "reference_range": "1.7-7.5",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Lymphocytes",
+      "value": "3.07",
+      "unit": "x10^9/L",
+      "reference_range": "1.0-4.0",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Monocytes",
+      "value": "0.47",
+      "unit": "x10^9/L",
+      "reference_range": "0.0-1.0",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Eosinophils",
+      "value": "0.15",
+      "unit": "x10^9/L",
+      "reference_range": "0.0-0.5",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Basophils",
+      "value": "0.04",
+      "unit": "x10^9/L",
+      "reference_range": "0.0-0.3",
+      "flag": "normal"
+    },
+    {
+      "category": "hematology",
+      "test_name": "Platelets",
+      "value": "231",
+      "unit": "x10^9/L",
+      "reference_range": "150-450",
+      "flag": "normal"
+    }
+  ],
+  "cvd_summary": {
+    "five_year_risk_percent": 7.5,
+    "risk_level": "intermediate",
+    "interpretation": "The patient has an intermediate risk of having a heart attack or stroke in the next 5 years, estimated between 5% to 10%. This means 5 to 10 out of 100 people like the patient will have a cardiovascular event if no action is taken.",
+    "modifiable_risk_factors": [
+      "low HDL cholesterol",
+      "high LDL cholesterol",
+      "high cholesterol/HDL ratio",
+      "poor dietary habits",
+      "low physical activity",
+      "psychosocial stress",
+      "overweight (BMI 26.5)"
+    ],
+    "risk_reduction_advice": [
+      "Follow a healthy eating pattern",
+      "Incorporate regular physical activity into your routine",
+      "Achieve and maintain a healthy weight",
+      "Limit your intake of alcohol",
+      "Consider blood pressure-lowering and/or lipid-modifying medicines if recommended by your doctor"
+    ]
+  },
+  "assessment": {
+    "summary": "33-year-old male with intermediate cardiovascular risk. No family history of premature cardiovascular disease, diabetes, or stroke. Lifestyle includes no smoking or alcohol, vegetarian but high-fat diet, and physical activity below recommendations. Reports fatigue and stress related to work for 6 months. BMI indicates overweight. Blood pressure and heart rate are within normal limits. Laboratory results show low HDL cholesterol, high LDL cholesterol, and elevated cholesterol/HDL ratio, which are independent risk factors for cardiovascular disease. Other labs including glucose, HbA1c, vitamin D, thyroid function, and iron studies are within normal limits. Mental health concerns include anxiety and stress.",
+    "family_history": "No family history of premature cardiovascular disease, diabetes, or stroke.",
+    "lifestyle": {
+      "smoking": "Never smoked",
+      "alcohol": "Does not consume alcohol",
+      "diet": "Vegetarian diet high in fat",
+      "physical_activity": "Below recommended levels"
+    }
+  },
+  "plan": [
+    {
+      "advice": "Increase physical activity to 2.5 to 5 hours of moderate intensity or 1.25 to 2.5 hours of vigorous intensity weekly, or an equivalent combination.",
+      "kb_resource_id": "personal_walking_plans"
+    },
+    {
+      "advice": "Discuss weight management goals including BMI and waist targets.",
+      "kb_resource_id": "racgp_weight_tips"
+    },
+    {
+      "advice": "Offer mental health counseling and provide crisis support numbers; patient to book mental health consult with GP.",
+      "kb_resource_id": "mental_health_support"
+    }
+  ],
+  "red_flags": [
+    {
+      "symptom": "Fatigue",
+      "note": "Patient reports fatigue for 6 months related to work stress or burnout."
+    },
+    {
+      "symptom": "Stress/Burnout",
+      "note": "Patient reports ongoing stress or burnout for 6 months due to work."
+    }
+  ],
+  "resources_table": [
+    {
+      "category": "healthy_eating",
+      "title": "Australian Guide to Healthy Eating",
+      "url": "https://www.eatforhealth.gov.au/guidelines/australian-guide-healthy-eating"
+    },
+    {
+      "category": "healthy_eating",
+      "title": "Healthy Eating Quiz (under 10 minutes)",
+      "url": "https://healthyeatingquiz.com.au/"
+    },
+    {
+      "category": "healthy_eating",
+      "title": "Heart Healthy Eating Pattern",
+      "url": "https://www.heartfoundation.org.au/healthy-living/healthy-eating/heart-healthy-eating-pattern"
+    },
+    {
+      "category": "weight_management",
+      "title": "Weight Loss – A Healthy Approach",
+      "url": "https://www.betterhealth.vic.gov.au/health/healthyliving/weight-loss-a-healthy-approach"
+    },
+    {
+      "category": "weight_management",
+      "title": "Ten Top Tips for Weight Control",
+      "url": "https://www.racgp.org.au/clinical-resources/clinical-guidelines/handi/handi-interventions/nutrition/ten-top-tips-for-weight-control"
+    },
+    {
+      "category": "weight_management",
+      "title": "Weight loss and dieting",
+      "url": "https://www.healthdirect.gov.au/weight-loss-and-dieting"
+    },
+    {
+      "category": "weight_management",
+      "title": "What is a healthy body weight?",
+      "url": "https://www.heartfoundation.org.au/your-heart/healthy-body-weight"
+    },
+    {
+      "category": "alcohol",
+      "title": "Australian guidelines to reduce health risks from drinking alcohol",
+      "url": "https://www.nhmrc.gov.au/health-advice/alcohol"
+    },
+    {
+      "category": "alcohol",
+      "title": "FARE Alcohol Support Services",
+      "url": "https://fare.org.au/resources/alcohol-support-services/"
+    },
+    {
+      "category": "blood_pressure",
+      "title": "Blood Pressure and Your Heart",
+      "url": "https://www.heartfoundation.org.au/your-heart/blood-pressure-and-your-heart"
+    },
+    {
+      "category": "blood_pressure",
+      "title": "High Blood Pressure — Stroke Foundation Fact Sheet",
+      "url": "https://strokefoundation.org.au/media/ixgpi3ga/sf891_high-bp-fact-sheet_0422_v5-final.pdf"
+    }
+  ],
+  "disclaimer": "This report is based on the provided clinical data and risk calculator outputs. It is intended for informational purposes and should not replace professional medical advice. Please consult your healthcare provider for personalized recommendations."
+}
