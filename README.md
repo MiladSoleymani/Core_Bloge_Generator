@@ -67,8 +67,11 @@ python -m app.main
 ### 5. Test the System
 
 ```bash
-# Run the test script
-python test_api.py
+# Run automated tests with pytest
+pytest
+
+# Or run fast tests only (skip slow OpenAI tests)
+pytest -m "not slow"
 
 # Or use the interactive API docs at http://localhost:8000/docs
 ```
@@ -89,9 +92,16 @@ Core_Bloge_Generator/
 ├── docs/                   # Documentation
 │   ├── architecture-stack.md
 │   └── implementation-guide.md
+├── tests/                  # Test suite (pytest)
+│   ├── conftest.py        # Test fixtures
+│   ├── test_health.py     # Health endpoint tests
+│   ├── test_knowledge_base.py
+│   ├── test_models.py     # Unit tests
+│   ├── test_report_generation.py
+│   └── README.md          # Testing guide
 ├── .env.example           # Environment template
 ├── requirements.txt       # Python dependencies
-├── test_api.py           # API test script
+├── pytest.ini            # Pytest configuration
 └── README.md             # This file
 ```
 
@@ -207,7 +217,19 @@ db.medical_reports.find().pretty()
 
 ### Run Tests
 ```bash
-python test_api.py
+# Run all tests
+pytest
+
+# Run fast tests only (skip slow OpenAI tests)
+pytest -m "not slow"
+
+# Run with coverage
+pytest --cov=app
+
+# Run specific test file
+pytest tests/test_health.py
+
+# See tests/README.md for more options
 ```
 
 ## Roadmap
