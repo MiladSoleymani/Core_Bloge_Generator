@@ -1,36 +1,34 @@
 """Pytest configuration and fixtures."""
 
 import pytest
-from httpx import AsyncClient, ASGITransport
+import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from app.main import app
 from app.core.config import get_settings
 from app.core.database import mongodb
 
 settings = get_settings()
 
 
+@pytest.fixture(scope="session")
+def event_loop():
+    """Create event loop for async tests."""
+    loop = asyncio.get_event_loop_policy().new_event_loop()
+    yield loop
+    loop.close()
+
+
 @pytest.fixture(autouse=True)
 async def reset_db():
     """Reset database connection before each test."""
-    # Reset the mongodb instance to force fresh connection
     mongodb.client = None
     mongodb.db = None
     yield
 
 
 @pytest.fixture
-async def client():
-    """Create test client."""
-    transport = ASGITransport(app=app)
-    async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        yield ac
-
-
-@pytest.fixture
 async def db():
-    """Get database connection for tests."""
+    """Get test database connection."""
     client = AsyncIOMotorClient(settings.mongodb_url)
     database = client[f"{settings.mongodb_db_name}_test"]
     yield database
@@ -90,4 +88,14 @@ def sample_patient_data():
             }
         ],
         "disclaimer": "Test disclaimer"
+    }
+
+
+@pytest.fixture
+def sample_request_message(sample_patient_data):
+    """Sample RabbitMQ request message."""
+    return {
+        "request_id": "test-request-123",
+        "user_id": "test-user-456",
+        **sample_patient_data
     }

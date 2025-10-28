@@ -1,7 +1,6 @@
-# FastAPI and Server
-fastapi
-uvicorn[standard]
-python-multipart
+# RabbitMQ
+aio-pika
+pika
 
 # Pydantic
 pydantic
@@ -14,18 +13,12 @@ pymongo
 # Redis
 redis
 
-# Celery (for async tasks)
-celery
-
 # OpenAI and LangChain
 openai
 langchain
 langchain-openai
 langchain-core
 tiktoken
-
-# HTTP Client
-httpx
 
 # Environment Variables
 python-dotenv
@@ -34,7 +27,6 @@ python-dotenv
 pytest
 pytest-asyncio
 pytest-cov
-motor
 
-# Other utilities
+# Logging
 python-json-logger

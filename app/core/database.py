@@ -30,6 +30,10 @@ class MongoDB:
         if self.db is None:
             raise RuntimeError("Database not connected")
 
+        # Users collection indexes
+        await self.db.users.create_index([("user_id", 1)], unique=True)
+        await self.db.users.create_index([("created_at", -1)])
+
         # Knowledge base indexes
         await self.db.knowledge_base.create_index([("category", 1)])
         await self.db.knowledge_base.create_index([("status", 1)])
@@ -38,7 +42,6 @@ class MongoDB:
         # Medical reports indexes
         await self.db.medical_reports.create_index([("user_id", 1), ("created_at", -1)])
         await self.db.medical_reports.create_index([("report_id", 1)], unique=True)
-        await self.db.medical_reports.create_index([("status", 1)])
 
         print("Database indexes created successfully")
 

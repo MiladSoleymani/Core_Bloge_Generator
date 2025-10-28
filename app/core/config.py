@@ -21,19 +21,17 @@ class Settings(BaseSettings):
 
     # Redis Configuration
     redis_url: str = "redis://localhost:6379"
+    redis_cache_ttl: int = 3600  # 1 hour default TTL
 
-    # Celery Configuration
-    celery_broker_url: str = "redis://localhost:6379/0"
-    celery_result_backend: str = "redis://localhost:6379/1"
+    # RabbitMQ Configuration
+    rabbitmq_url: str = "amqp://guest:guest@localhost:5672/"
+    rabbitmq_request_queue: str = "report_generation_requests"
+    rabbitmq_response_queue: str = "report_generation_responses"
+    rabbitmq_prefetch_count: int = 1
 
-    # API Configuration
-    api_host: str = "0.0.0.0"
-    api_port: int = 8000
-    api_reload: bool = True
-
-    # Auth System Configuration
-    auth_system_url: str = ""
-    auth_validate_endpoint: str = "/api/validate"
+    # Worker Configuration
+    worker_name: str = "report_worker"
+    max_retries: int = 3
 
     # Logging
     log_level: str = "INFO"

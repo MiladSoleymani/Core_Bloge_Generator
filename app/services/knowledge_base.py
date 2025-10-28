@@ -62,6 +62,14 @@ class KnowledgeBaseService:
         print(f"Imported {imported_count} knowledge base items to database")
         return imported_count
 
+    async def import_from_files(self) -> int:
+        """
+        Import knowledge base from files to MongoDB.
+
+        Alias for import_to_database() for backward compatibility.
+        """
+        return await self.import_to_database()
+
     async def get_by_category(self, category: str, status: str = "draft") -> List[Dict]:
         """Get all knowledge base items for a category."""
         cursor = self.kb_collection.find({"category": category, "status": status})

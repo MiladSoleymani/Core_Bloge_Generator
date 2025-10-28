@@ -1,6 +1,7 @@
 """Pydantic models for medical report generation."""
 
 from typing import List, Optional
+from datetime import datetime
 from pydantic import BaseModel, Field
 
 
@@ -148,3 +149,55 @@ class GenerateReportResponse(BaseModel):
     report_id: str
     status: str
     report: Optional[MedicalReport] = None
+
+
+# RabbitMQ Message Schemas
+
+class ReportGenerationRequest(BaseModel):
+    """RabbitMQ request message for report generation."""
+
+    request_id: str = Field(description="Unique request identifier")
+    user_id: str = Field(description="User identifier")
+    patient: Patient
+    labs: List[Lab]
+    cvd_summary: Optional[CVDSummary] = None
+    assessment: Assessment
+    plan: List[PlanItem]
+    red_flags: List[RedFlag]
+    resources_table: List[Resource]
+    disclaimer: str = "This report is based on the provided clinical data and risk calculator outputs. It is intended for informational purposes and should not replace professional medical advice. Please consult your healthcare provider for personalized recommendations."
+
+
+class ReportGenerationResponse(BaseModel):
+    """RabbitMQ response message for report generation."""
+
+    request_id: str = Field(description="Original request identifier")
+    user_id: str = Field(description="User identifier")
+    report_id: str = Field(description="Generated report identifier")
+    status: str = Field(description="Status: success, failed")
+    error_message: Optional[str] = None
+    timestamp: datetime = Field(default_factory=datetime.utcnow)
+
+
+# MongoDB Storage Schemas
+
+class StoredUser(BaseModel):
+    """User information stored in MongoDB."""
+
+    user_id: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class StoredReport(BaseModel):
+    """Medical report stored in MongoDB."""
+
+    report_id: str
+    user_id: str
+    report_data: MedicalReport
+    json_content: dict
+    markdown_content: Optional[str] = None
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    generation_time_seconds: Optional[float] = None
+    tokens_used: Optional[int] = None
+    estimated_cost: Optional[float] = None

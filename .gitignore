@@ -42,7 +42,6 @@ venv.bak/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-*.ipynb
 
 # Testing
 .pytest_cache/
@@ -50,13 +49,12 @@ venv.bak/
 htmlcov/
 .tox/
 
-# Celery
-celerybeat-schedule
-celerybeat.pid
-
 # Logs
 *.log
 logs/
+
+# Docker data directories
+docker-data/
 
 # Database
 *.db

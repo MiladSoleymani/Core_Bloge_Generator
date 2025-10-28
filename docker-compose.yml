@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7
+    container_name: report_generator_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./docker-data/mongodb:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: blog_generator
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - report_network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: report_generator_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./docker-data/redis:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - report_network
+
+  # RabbitMQ Message Broker
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: report_generator_rabbitmq
+    ports:
+      - "5672:5672"   # AMQP port
+      - "15672:15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - ./docker-data/rabbitmq:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - report_network
+
+  # Report Generator Worker (uncomment to run worker in Docker)
+  # worker:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: report_generator_worker
+  #   depends_on:
+  #     mongodb:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #     rabbitmq:
+  #       condition: service_healthy
+  #   environment:
+  #     OPENAI_API_KEY: ${OPENAI_API_KEY}
+  #     MONGODB_URL: mongodb://mongodb:27017
+  #     REDIS_URL: redis://redis:6379
+  #     RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
+  #   volumes:
+  #     - ./data:/app/data
+  #   networks:
+  #     - report_network
+  #   restart: unless-stopped
+
+networks:
+  report_network:
+    driver: bridge
