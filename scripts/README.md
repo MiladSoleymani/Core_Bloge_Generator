@@ -1,6 +1,6 @@
 # RabbitMQ Integration Scripts
 
-Simple Python scripts for sending requests and receiving responses from the report generation worker.
+Simple Python scripts for sending requests, receiving responses, and checking the database.
 
 ## Scripts
 
@@ -55,6 +55,46 @@ python scripts/receive_response.py --host rabbitmq.example.com
 **Options:**
 - `--host` - RabbitMQ host (default: localhost)
 - `--timeout` - Stop after N seconds (default: run forever)
+
+### 3. check_database.py
+
+Check reports and users stored in MongoDB.
+
+**Basic Usage:**
+```bash
+# Show stats and recent reports
+python scripts/check_database.py
+
+# Show database statistics
+python scripts/check_database.py --stats
+
+# List all users
+python scripts/check_database.py --list-users
+
+# List all reports
+python scripts/check_database.py --list-reports
+
+# Get specific report
+python scripts/check_database.py --report-id <report-id>
+
+# Get report in markdown format
+python scripts/check_database.py --report-id <report-id> --markdown
+
+# Export report to JSON
+python scripts/check_database.py --report-id <report-id> --export report.json
+
+# Filter reports by user
+python scripts/check_database.py --list-reports --user-id user-123
+```
+
+**Options:**
+- `--stats` - Show database statistics
+- `--list-users` - List all users
+- `--list-reports` - List all reports
+- `--report-id` - Get specific report by ID
+- `--user-id` - Filter reports by user ID
+- `--markdown` - Show report in markdown format
+- `--export` - Export report to JSON file
 
 ## Quick Test
 

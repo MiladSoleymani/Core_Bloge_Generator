@@ -54,7 +54,7 @@ docker-compose ps
 
 ```bash
 # Run setup script
-python tests/setup_worker.py
+python setup_worker.py
 ```
 
 ### 5. Start Worker
@@ -68,6 +68,9 @@ python -m app.worker
 
 ```bash
 # Send test request (in another terminal)
+python scripts/send_request.py
+
+# Or use full test client
 python tests/test_rabbitmq_client.py
 ```
 
@@ -109,46 +112,28 @@ python tests/test_rabbitmq_client.py
 }
 ```
 
-## Integration Example
+## Integration Scripts
 
-### Send Request (Python)
+Use the provided scripts to integrate with your backend:
 
-```python
-import pika
-import json
-import uuid
+```bash
+# Send a report request
+python scripts/send_request.py --user-id user-123
 
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters('localhost')
-)
-channel = connection.channel()
+# Listen for responses
+python scripts/receive_response.py
 
-request = {
-    "request_id": str(uuid.uuid4()),
-    "user_id": "user-123",
-    # ... your data
-}
+# Check saved reports in database
+python scripts/check_database.py --list-reports
 
-channel.basic_publish(
-    exchange='',
-    routing_key='report_generation_requests',
-    body=json.dumps(request)
-)
+# Get specific report
+python scripts/check_database.py --report-id <report-id>
+
+# View report as markdown
+python scripts/check_database.py --report-id <report-id> --markdown
 ```
 
-### Receive Response
-
-```python
-def callback(ch, method, properties, body):
-    response = json.loads(body)
-    print(f"Report ID: {response['report_id']}")
-
-channel.basic_consume(
-    queue='report_generation_responses',
-    on_message_callback=callback
-)
-channel.start_consuming()
-```
+See `scripts/README.md` for detailed usage and integration examples.
 
 ## Configuration
 
@@ -163,9 +148,43 @@ RABBITMQ_URL=amqp://guest:guest@localhost:5672/
 
 ## Monitoring
 
-- **RabbitMQ UI**: http://localhost:15672 (guest/guest)
-- **MongoDB**: `mongosh mongodb://localhost:27017`
-- **Redis**: `redis-cli`
+### RabbitMQ Management UI
+- **URL**: http://localhost:15672
+- **Login**: guest / guest
+- **Monitor**: Queue depths, message rates, consumers
+
+### Check Reports in Database
+
+```bash
+# View all reports
+python scripts/check_database.py
+
+# Show statistics
+python scripts/check_database.py --stats
+
+# List reports
+python scripts/check_database.py --list-reports
+
+# Get specific report
+python scripts/check_database.py --report-id <id>
+```
+
+### MongoDB Shell
+
+```bash
+mongosh mongodb://localhost:27017
+use blog_generator
+db.medical_reports.find().pretty()
+db.users.find().pretty()
+```
+
+### Redis
+
+```bash
+redis-cli
+KEYS *
+GET input:user-123
+```
 
 ## Scaling
 
@@ -205,21 +224,27 @@ Core_Bloge_Generator/
 │       ├── report_generator.py    # AI generation
 │       ├── knowledge_base.py      # KB management
 │       └── report_storage.py      # MongoDB storage
+├── scripts/
+│   ├── send_request.py            # Send requests to RabbitMQ
+│   ├── receive_response.py        # Receive responses
+│   ├── check_database.py          # Check reports in DB
+│   └── README.md                  # Scripts documentation
 ├── data/
 │   ├── knowledgebase/             # Health information
 │   └── sample_reports/            # Test data
 ├── docs/
 │   ├── QUICKSTART.md              # 5-minute setup guide
 │   ├── README_RABBITMQ.md         # Full documentation
-│   └── RABBITMQ_ARCHITECTURE.md   # Architecture details
+│   ├── RABBITMQ_ARCHITECTURE.md   # Architecture details
+│   └── MIGRATION_SUMMARY.md       # Migration guide
 ├── tests/
-│   ├── setup_worker.py            # Initialization script
-│   ├── test_rabbitmq_client.py    # Test client
-│   └── test_*.py                  # Unit tests
-├── notebooks/
-│   └── generate_specialized_reports.ipynb  # Research prototype
+│   ├── test_rabbitmq_client.py    # Integration test
+│   ├── test_models.py             # Unit tests
+│   └── test_*.py                  # Other tests
+├── setup_worker.py                # System initialization
 ├── docker-compose.yml             # Infrastructure setup
 ├── Dockerfile                     # Worker container
+├── HOW_TO_CHECK_REPORTS.md        # Database guide
 └── requirements.txt               # Dependencies
 ```
 
@@ -228,6 +253,9 @@ Core_Bloge_Generator/
 - **[Quick Start Guide](docs/QUICKSTART.md)** - Get started in 5 minutes
 - **[Full Documentation](docs/README_RABBITMQ.md)** - Complete guide
 - **[Architecture](docs/RABBITMQ_ARCHITECTURE.md)** - Technical details
+- **[Migration Summary](docs/MIGRATION_SUMMARY.md)** - What changed from FastAPI
+- **[How to Check Reports](HOW_TO_CHECK_REPORTS.md)** - Database queries and tools
+- **[Scripts Guide](scripts/README.md)** - Integration scripts
 
 ## Development
 
@@ -247,18 +275,24 @@ docker-compose logs -f
 python -m app.worker  # See output in terminal
 ```
 
-### Database Operations
+### Check Database
 
 ```bash
-# MongoDB
+# Python script (recommended)
+python scripts/check_database.py --list-reports
+python scripts/check_database.py --report-id <id>
+
+# MongoDB shell
 mongosh mongodb://localhost:27017
 use blog_generator
-db.medical_reports.find()
+db.medical_reports.find().pretty()
 
 # Redis
 redis-cli
 KEYS *
 ```
+
+See **[HOW_TO_CHECK_REPORTS.md](HOW_TO_CHECK_REPORTS.md)** for complete guide.
 
 ## Troubleshooting
 
@@ -279,7 +313,17 @@ docker-compose ps
 ### Knowledge Base Empty
 
 ```bash
-python tests/setup_worker.py
+python setup_worker.py
+```
+
+### Check if Reports are Saving
+
+```bash
+# View all saved reports
+python scripts/check_database.py --list-reports
+
+# Check database statistics
+python scripts/check_database.py --stats
 ```
 
 ## Performance
