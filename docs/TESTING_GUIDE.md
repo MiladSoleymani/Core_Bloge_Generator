@@ -17,9 +17,7 @@ This installs pytest and related packages:
 
 ```bash
 # Start MongoDB
-docker run -d --name mongodb \
--e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
--e MONGO_INITDB_ROOT_PASSWORD=Mil@d1378 \
+docker run -d --name mongodb \        
 -p 27017:27017 \
 -v /Users/miladsoleymani/Documents/work_space/MFM/Core_Bloge_Generator/mongodb-data:/data/db \
 mongo:7.0
