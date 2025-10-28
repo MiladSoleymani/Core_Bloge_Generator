@@ -22,6 +22,8 @@ docker run -d --name mongodb \
 -v /Users/miladsoleymani/Documents/work_space/MFM/Core_Bloge_Generator/mongodb-data:/data/db \
 mongo:7.0
 
+# docker stop mongodb
+
 # Add OpenAI API key to .env (for slow tests)
 echo "OPENAI_API_KEY=sk-your-key-here" >> .env
 ```
