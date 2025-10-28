@@ -27,7 +27,7 @@ class MongoDB:
 
     async def create_indexes(self):
         """Create database indexes."""
-        if not self.db:
+        if self.db is None:
             raise RuntimeError("Database not connected")
 
         # Knowledge base indexes
@@ -49,6 +49,6 @@ mongodb = MongoDB()
 
 async def get_database() -> AsyncIOMotorDatabase:
     """Get database instance."""
-    if not mongodb.db:
+    if mongodb.db is None:
         await mongodb.connect()
     return mongodb.db

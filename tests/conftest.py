@@ -1,22 +1,23 @@
 """Pytest configuration and fixtures."""
 
 import pytest
-import asyncio
 from httpx import AsyncClient, ASGITransport
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from app.main import app
 from app.core.config import get_settings
+from app.core.database import mongodb
 
 settings = get_settings()
 
 
-@pytest.fixture(scope="session")
-def event_loop():
-    """Create event loop for async tests."""
-    loop = asyncio.get_event_loop_policy().new_event_loop()
-    yield loop
-    loop.close()
+@pytest.fixture(autouse=True)
+async def reset_db():
+    """Reset database connection before each test."""
+    # Reset the mongodb instance to force fresh connection
+    mongodb.client = None
+    mongodb.db = None
+    yield
 
 
 @pytest.fixture
