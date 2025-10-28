@@ -69,6 +69,7 @@ tmp/
 
 # MongoDB
 data/mongodb/
+mongodb-data/
 
 # Redis dump
 dump.rdb

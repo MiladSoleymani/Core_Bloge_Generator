@@ -9,6 +9,7 @@ from app.models.schemas import (
     Lifestyle,
     Assessment,
     CategoryReport,
+    CategoryReportItem,
     MedicalReport,
 )
 
@@ -123,7 +124,7 @@ def test_medical_report_with_category_reports():
         red_flags=[],
         resources_table=[],
         category_reports=[
-            CategoryReport(
+            CategoryReportItem(
                 category="test",
                 text="Test report",
                 sources=["https://example.com"]

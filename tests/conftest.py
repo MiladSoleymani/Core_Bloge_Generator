@@ -2,7 +2,7 @@
 
 import pytest
 import asyncio
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from app.main import app
@@ -22,7 +22,8 @@ def event_loop():
 @pytest.fixture
 async def client():
     """Create test client."""
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         yield ac
 
 

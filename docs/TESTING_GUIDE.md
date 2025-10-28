@@ -17,7 +17,12 @@ This installs pytest and related packages:
 
 ```bash
 # Start MongoDB
-docker run -d -p 27017:27017 --name mongodb mongo:7
+docker run -d --name mongodb \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+-e MONGO_INITDB_ROOT_PASSWORD=Mil@d1378 \
+-p 27017:27017 \
+-v /Users/miladsoleymani/Documents/work_space/MFM/Core_Bloge_Generator/mongodb-data:/data/db \
+mongo:7.0
 
 # Add OpenAI API key to .env (for slow tests)
 echo "OPENAI_API_KEY=sk-your-key-here" >> .env
@@ -70,16 +75,16 @@ tests/test_report_generation.py ✓✓✓✓✓✓           6 passed
 
 ```bash
 # Test just health endpoints
-pytest tests/test_health.py
+pytest tests/test_health.py -v
 
 # Test just models (unit tests)
-pytest tests/test_models.py
+pytest tests/test_models.py -v
 
 # Test knowledge base functionality
-pytest tests/test_knowledge_base.py
+pytest tests/test_knowledge_base.py -v
 
 # Test a specific function
-pytest tests/test_health.py::test_health_check
+pytest tests/test_health.py::test_health_check -v
 ```
 
 ---
